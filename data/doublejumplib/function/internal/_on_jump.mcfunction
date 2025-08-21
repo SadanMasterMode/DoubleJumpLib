@@ -6,5 +6,5 @@ scoreboard players set @s djl.prevJump 1
 
 # Run custom functions
 scoreboard players set $djl.running_tag djl.debug 1
-function #doublejumplib:on_double_jump
+function #doublejumplib:__on_double_jump__
 scoreboard players reset $djl.running_tag
