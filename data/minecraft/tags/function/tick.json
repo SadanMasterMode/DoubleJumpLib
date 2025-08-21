@@ -1,6 +1,6 @@
 {
     "values": [
-        "doublejumplib:tick"
+        "doublejumplib:internal/_tick"
     ],
     "replace": false
 }

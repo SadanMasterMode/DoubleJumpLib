@@ -1,0 +1,3 @@
+execute unless predicate doublejumplib:_system_installed run return run function doublejumplib:internal/_fail_command {command:'tellraw @s {text:"The system is not installed yet! Please run the doublejumplib:__install__ function before running any files.",color:"red"}'}
+
+tellraw @s [{text:"For more information about this library and how to use it, please check the ",color:"gold",bold:false},{text:"README",color:"gold",bold:true},{text:" located in the GitHub repository.",color:"gold",bold:false}]
