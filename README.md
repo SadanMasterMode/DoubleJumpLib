@@ -16,6 +16,7 @@ For any errors, troubleshooting or help, please contact @sadanmastermode on Disc
 ## Documentation
 ### Downloading
 To download the pack, you can click on the latest release on the right. This will download the pack. Once downloaded, you can unzip it and put it in your datapacks folder in your world folder to import the library.
+
 Note that the pack has only been tested in 1.21.8 and higher. This pack may break in lower versions, please exercise caution
 
 ### Installing
@@ -24,9 +25,11 @@ If you try to run functions without installing the pack, errors will come up and
 
 ### Adding a callback
 DoubleJumpLib can be configured by setting a variety of API endpoints to values you wish. These endpoints are denoted by a pair of underscores around the name, like `__install__` or `__help__`. Do not intentionally run any functions without the pair of double underscores.
+
 One such example of an API endpoint is the function callback. This pack will call a function tag when it detects a user has pressed a jump input in the air. The function tag is located at `#doublejumplib:__on_double_jump__`, and the relative path would be found at `doublejumplib/tags/function/__on_double_jump__.json`. Add a function from your pack into this tag to allow the pack to run it.
 
 Inside of a callback function, the executor and position is set to the player who double-jumped. Additionally, to find the current double-jump number (how many times they've double-jumped in the current jump), it is set the player's `djl.jumpCount` score.
+
 For example, to check if the player has double-jumped twice in the current jump, you can use: `execute if score @s djl.jumpCount matches 2 run say I jumped twice!`.
 
 To test if the pack was installed correctly, you can try adding `doublejumplib:__test__` to the function tag. If you properly installed everything, then jumping midair will send a tellraw message in chat giving some info about the jump. Do not run this function from chat, it is intended to be ran through the function tag.
@@ -41,6 +44,7 @@ There are 2 main variables you can change, via scoreboards:
 These are **global settings**, meaning any other pack using DoubleJumpLib will use these same settings too.
 #### IMPORTANT:
 To maintain compatibility across packs, it is recommended to add checks for the player's current `djl.jumpCount` to see what jump the player is on, in case another pack increases the limit. 
+
 For example, if your pack is intended to only activate once in a jump and gives the player a boost of upwards momentum via the `gravity` attribute, and another pack increases the `djl.maxJumps` limit to 3, then your pack will not work as intended. It is crucial in your pack to check if the player is on their first double-jump of the current jump via `execute if score @s djl.jumpCount matches 1` before inversing their gravity, unless want the other pack to allow the player to defy gravity 3 times a jump instead of 1.
 
 There are 4 main callable function endpoints you can use.
@@ -59,8 +63,8 @@ If you do want to use the main logic of this pack without all the library-slop, 
 
 ## How does it work?
 This uses the 'new' `input` predicate for the `type_specific` predicate, as well as the `on_ground` flag.
-The main logic is as follows. You can 'tag' the player when they're first off the ground (using the `on_ground` flag) and untag them when they land on the ground
-Also tag them whenever they're holding space (and of course remove it when they're not)
+
+The main logic is as follows. You can 'tag' the player when they're first off the ground (using the `on_ground` flag) and untag them when they land on the ground. Also tag them whenever they're holding space (and of course remove it when they're not)
 
 Assuming the player has both tags (is off the ground and is holding jump), then check for some things in the previous tick:
  - If they were both off the ground and NOT holding jump, then they double jumped (this is because they released the jump input after jumping first)
