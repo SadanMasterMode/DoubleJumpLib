@@ -45,7 +45,7 @@ These are **global settings**, meaning any other pack using DoubleJumpLib will u
 #### IMPORTANT:
 To maintain compatibility across packs, it is recommended to add checks for the player's current `djl.jumpCount` to see what jump the player is on, in case another pack increases the limit. 
 
-For example, if your pack is intended to only activate once in a jump and gives the player a boost of upwards momentum via the `gravity` attribute, and another pack increases the `djl.maxJumps` limit to 3, then your pack will not work as intended. It is crucial in your pack to check if the player is on their first double-jump of the current jump via `execute if score @s djl.jumpCount matches 1` before inversing their gravity, unless want the other pack to allow the player to defy gravity 3 times a jump instead of 1.
+For example, if your pack is intended to only activate once in a jump and gives the player a boost of upwards momentum via the `gravity` attribute, and another pack increases the `djl.maxJumps` limit to 3, then your pack will not work as intended. It is crucial in your pack to check if the player is on their first double-jump of the current jump via `execute if score @s djl.jumpCount matches 1` before inversing their gravity, unless you want the other pack to allow the player to defy gravity 3 times a jump instead of 1.
 
 There are 4 main callable function endpoints you can use.
 | Function Name | Use |
